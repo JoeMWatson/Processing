@@ -4,8 +4,8 @@ int h = 600;
 //variables
 float a,b,c,d;
 float sfx,sfy,yy,xx;
-int opacity = 8;
-int layers = 250; // number of layers
+int opacity = 5;
+int layers = 50; // number of layers
 int layernum = 8000; // number of points per layers
 int num = layers * layernum;
 int death = 600; // keep for grayscale
@@ -16,13 +16,19 @@ dpoints[] points = new dpoints[num];
 
 void setup(){
   size(w,h,P3D); //P3D needed for render 
+  // jProcessingJS(this, {fullscreen:true, mouseoverlay:true});
   background(230);
   rectMode(CORNER);
   // equation parameters
-  a = 3.95667;
-  b = -2.20567;
-  c = 6.78;
-  d = -2.677;
+  //a = 3.95667;
+  //b = -2.20567;
+  //c = 6.78;
+  //d = -2.677;
+  
+  a = random(-5,5);
+  b = random(-5,5);
+  c = random(-5,5);
+  d = random(-5,5);
   //scale factors and positioning factors
   sfx = 4;
   sfy = 4;
@@ -65,7 +71,7 @@ class dpoints {
   void place() {
     x2 = sin(a*y) - cos(b*x);
     y2 = sin(c*x) - cos(d*y);
-    stroke(255-j,j,j,opacity);
+    stroke(0,0,0,opacity);
     x=x2;
     y=y2;
     fill(layers-j,j,j,opacity); //plot in colour gradient though the layers with added opacity for layering
